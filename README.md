@@ -1,6 +1,7 @@
 # Vertical Crab House Aquatic
 
-![Crab Crab](assets/crab_crab_logo.png)
+![Crab Crab Logo](public/assets/crab_crab_logo.png)
+
 Vertical Crab House adalah nama proyek web-based platform yang Anda kerjakan, yang bertujuan untuk mendukung ekosistem peternakan kepiting. Platform ini melibatkan berbagai peran, seperti Crab Farmer, User (pembeli), dan Supply Merchant, dengan tujuan utama meningkatkan efisiensi, transparansi, dan kemudahan dalam proses beternak, pengelolaan, dan penjualan kepiting.
 
 Platform ini memiliki beberapa fitur utama, termasuk Dashboard Monitoring, Logistics Management, E-commerce untuk Pembelian Kepiting, dan User Management. Anda juga menggunakan teknologi seperti IoT untuk memonitor kondisi kepiting, serta Laravel untuk pengembangan back-end sistem.
