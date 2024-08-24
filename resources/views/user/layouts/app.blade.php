@@ -128,7 +128,7 @@
                     <div class="ec-pro-content">
                         <a href="#" class="cart_pro_title">${data.produk_variant.nama_variant}</a>
                         <p>asasasas</p>
-                        <span class="cart-price"><span>Rp. ${formatRupiah(data.produk_variant.produk.price)}</span> x ${data.qty}</span>
+                        <span class="cart-price"><span>Rp. ${formatRupiah(data.produk_variant.price)}</span> x ${data.qty}</span>
 
                     </div>
                 </li>

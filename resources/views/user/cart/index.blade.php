@@ -338,7 +338,7 @@
                             </div>
                         </td>
                         <td class="column-2">${data.produk_variant.produk.nama_produk}</td>
-                        <td class="column-3">Rp. ${formatRupiah(data.produk_variant.produk.price)}</td>
+                        <td class="column-3">Rp. ${formatRupiah(data.produk_variant.price)}</td>
                         <td class="column-4">
                             <div class="wrap-num-product flex-w m-l-auto m-r-0">
                                 <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" data-id="${data.id}" data-type="minus">
