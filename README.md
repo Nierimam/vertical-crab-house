@@ -14,9 +14,9 @@ Proyek ini mencakup berbagai aspek mulai dari manajemen logistik, e-commerce, hi
 
 
 -   Imam Mukhlash (https://github.com/Nierimam)
--   Muh Ario Andriansyah (https://github.com/madrioo)
+-   Muh Ario Adriansyah (https://github.com/madrioo)
 -   Citra Alivia (https://github.com/Cttraaaaaa)
--   Zaky Zahrani Fauzi](https://github.com/zakyzahrani)
+-   Zaky Zahrani Fauzi(https://github.com/zakyzahrani)
 
 ## Installation
 
