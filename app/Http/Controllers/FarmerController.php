@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\categories;
 use App\Models\Farmer;
 use App\Models\produks;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Http\Request;
 
 class FarmerController extends Controller
@@ -28,7 +30,7 @@ class FarmerController extends Controller
         }
 
         $farmers = $farmers->paginate(10);
-        return view('admin.farmer.index',[
+        return view('admin.farmer.index', [
             'farmers' => $farmers,
             'search' => $search
         ]);
@@ -63,7 +65,7 @@ class FarmerController extends Controller
      */
     public function show(Farmer $farmer)
     {
-        return view('admin.farmer.show',[
+        return view('admin.farmer.show', [
             'farmer' => $farmer
         ]);
     }
@@ -103,21 +105,22 @@ class FarmerController extends Controller
         return response()->json(['message' => 'Berhasil Menghapus Data Farmer !']);
     }
 
-    public function changeStatus($id){
+    public function changeStatus($id)
+    {
         $farmer = Farmer::find($id);
         if ($farmer->isConfirm == 1) {
             $farmer->isConfirm = 0;
             $farmer->save();
             return response()->json(['message' => 'Berhasil Mengubah Status Farmer Menjadi NonAktif!']);
-        }else{
+        } else {
             $farmer->isConfirm = 1;
             $farmer->save();
             return response()->json(['message' => 'Berhasil Mengubah Status Farmer Menjadi Aktif!']);
         }
     }
 
-    public function showFarmerDashboard(Request $request,$id){
-
+    public function showFarmerDashboard(Request $request, $id)
+    {
 
         $referenceHistory = $this->database->getReference('/history');
         $snapshotHistory = $referenceHistory->getSnapshot();
@@ -141,20 +144,26 @@ class FarmerController extends Controller
 
         foreach (array_reverse($dataHistory, true) as $key => $value) {
             if ($no < 5) {
-                    $result['dissolved_oxygen'][] = $value['dissolved_oxygen'];
-                    $result['nitrite'][] = $value['nitrite'];
-                    $result['ph'][] = $value['ph'];
-                    $result['salinity'][] = $value['salinity'];
-                    $result['temperature'][] = $value['temperature'];
-                    $result['total_ammonia_nitrogen'][] = $value['total_ammonia_nitrogen'];
-                    $result['unionized_ammonia'][] = $value['unionized_ammonia'];
-                    $result['datetime'][] = $value['Date'] . ' ' . $value['Time'];
+                // Konversi waktu ke zona waktu lokal (misalnya Asia/Jakarta)
+                $datetime = new DateTime($value['Date'] . ' ' . $value['Time'], new DateTimeZone('UTC'));
+                $datetime->setTimezone(new DateTimeZone('Asia/Jakarta'));
+
+                $result['dissolved_oxygen'][] = $value['dissolved_oxygen'];
+                $result['nitrite'][] = $value['nitrite'];
+                $result['ph'][] = $value['ph'];
+                $result['salinity'][] = $value['salinity'];
+                $result['temperature'][] = $value['temperature'];
+                $result['total_ammonia_nitrogen'][] = $value['total_ammonia_nitrogen'];
+                $result['unionized_ammonia'][] = $value['unionized_ammonia'];
+                $result['datetime'][] = $datetime->format('Y-m-d H:i:s'); // Format waktu yang telah dikonversi
                 $no++;
             }
         }
+
         $farmer = Farmer::find($id);
         $month = $request->month ?? '';
-        return view('admin.farmer.dashboard-farmer',[
+
+        return view('admin.farmer.dashboard-farmer', [
             'farmer' => $farmer,
             'month' => $month,
             'dataRealtime' => $dataRealtime,
@@ -162,12 +171,13 @@ class FarmerController extends Controller
         ]);
     }
 
-    public function farmerHistory(Request $request){
+    public function farmerHistory(Request $request)
+    {
 
         $referenceHistory = $this->database->getReference('/history');
         $snapshotHistory = $referenceHistory->getSnapshot();
         $dataHistory = $snapshotHistory->getValue();
-        return view('admin.farmer.history',[
+        return view('admin.farmer.history', [
             'dataHistorys' => array_reverse($dataHistory, true)
         ]);
     }
