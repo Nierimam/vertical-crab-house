@@ -1,5 +1,6 @@
 # Vertical Crab House Aquatic
 
+
 <div align="center">
   <img src="public/assets/crab_crab_logo.png" alt="Crab Crab Logo" style="width: 50%; height: auto;" />
 </div>
@@ -10,6 +11,7 @@ Platform ini memiliki beberapa fitur utama, termasuk Dashboard Monitoring, Logis
 Proyek ini mencakup berbagai aspek mulai dari manajemen logistik, e-commerce, hingga monitoring berbasis IoT.
 
 ## Team Members
+
 
 -   Imam Mukhlash (https://github.com/Nierimam)
 -   Muh Ario Andriansyah (https://github.com/madrioo)
