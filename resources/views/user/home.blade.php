@@ -134,10 +134,10 @@
                                                         <a href="" class="image">
                                                             <img class="main-image"
                                                                 src="{{asset('upload/'.$produk->produk_variants[0]->img)}}"
-                                                                alt="Product" width="100%" />
+                                                                alt="Product" width="450" height="250" />
                                                             <img class="hover-image"
                                                                 src="{{asset('upload/'.$produk->produk_variants[0]->img)}}"
-                                                                alt="Product" width="100%" />
+                                                                alt="Product" width="450" height="250" />
                                                         </a>
                                                         <div class="ec-pro-actions">
                                                             <a href="#" class="ec-btn-group quickview"

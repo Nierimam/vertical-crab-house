@@ -51,7 +51,7 @@
                         </div>
                         <div class="d-flex align-items-center mt-3">
                             <div>
-                                <h4 class="mb-0">{{ $produk }}</h4>
+                                <h4 class="mb-0">{{ $produkCountMerchant }}</h4>
                             </div>
                         </div>
                     </div>
