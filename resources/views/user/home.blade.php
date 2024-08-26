@@ -187,8 +187,12 @@
 <!-- offer Section End -->
 
 <!-- Ec Blog page -->
-<section class="ec-page-content section-space-p">
+<section class="ec-page-content">
     <div class="container">
+        <div class="section-title">
+            <h2 class="ec-title">Blog</h2>
+            <p class="sub-title mb-5">Dapatkan informasi terbaru mengenai produk atau kepiting.</p>
+        </div>
         <div class="row">
             <div class="ec-blogs-rightside col-lg-12 col-md-12">
 
