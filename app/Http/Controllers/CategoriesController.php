@@ -29,7 +29,7 @@ class CategoriesController extends Controller
                 $query->where('name', 'like', '%' . $search . '%');
             });
         }
-        $data = $data->paginate(7);
+        $data = $data->paginate(10);
         return view('admin.kategori.index',[
             'data' => $data,
             'search' => $search

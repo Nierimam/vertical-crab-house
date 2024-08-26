@@ -34,7 +34,7 @@ class UserController extends Controller
                 });
             });
         }
-        $user = $user->paginate(7);
+        $user = $user->paginate(10);
         return view('admin.user.index', [
             'users' => $user,
             'search' => $search
