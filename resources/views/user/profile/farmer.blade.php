@@ -117,7 +117,7 @@
                     <div class="row mb-3">
                         <div class="col-lg-12">
                             <label class="form-label">Nama Farmer</label>
-                            <input type="text" name="nama_merchant" class="form-control form-control-sm" value="{{ $farmer->nama_farmer }}" >
+                            <input type="text" name="nama_farmer" class="form-control form-control-sm" value="{{ $farmer->nama_farmer }}" >
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -129,7 +129,7 @@
                     <div class="row mb-3">
                         <div class="col-lg-12">
                             <label class="form-label">Alamat Farmer</label>
-                            <textarea rows="5" type="text" name="alamat" class="form-control form-control-sm" readonly disabled >{{ $farmer->alamat }}</textarea>
+                            <textarea rows="5" type="text" name="alamat" class="form-control form-control-sm" >{{ $farmer->alamat }}</textarea>
                         </div>
                     </div>
                     <div class="row mb-3">

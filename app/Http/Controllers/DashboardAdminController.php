@@ -7,6 +7,8 @@ use App\Models\orders;
 use App\Models\produks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use DateTime;
+use DateTimeZone;
 
 class DashboardAdminController extends Controller
 {
@@ -45,14 +47,18 @@ class DashboardAdminController extends Controller
 
         foreach (array_reverse($dataHistory, true) as $key => $value) {
             if ($no < 5) {
-                    $result['dissolved_oxygen'][] = $value['dissolved_oxygen'];
-                    $result['nitrite'][] = $value['nitrite'];
-                    $result['ph'][] = $value['ph'];
-                    $result['salinity'][] = $value['salinity'];
-                    $result['temperature'][] = $value['temperature'];
-                    $result['total_ammonia_nitrogen'][] = $value['total_ammonia_nitrogen'];
-                    $result['unionized_ammonia'][] = $value['unionized_ammonia'];
-                    $result['datetime'][] = $value['Date'] . ' ' . $value['Time'];
+                // Konversi waktu ke zona waktu lokal (misalnya Asia/Jakarta)
+                $datetime = new DateTime($value['Date'] . ' ' . $value['Time'], new DateTimeZone('UTC'));
+                $datetime->setTimezone(new DateTimeZone('Asia/Jakarta'));
+
+                $result['dissolved_oxygen'][] = $value['dissolved_oxygen'];
+                $result['nitrite'][] = $value['nitrite'];
+                $result['ph'][] = $value['ph'];
+                $result['salinity'][] = $value['salinity'];
+                $result['temperature'][] = $value['temperature'];
+                $result['total_ammonia_nitrogen'][] = $value['total_ammonia_nitrogen'];
+                $result['unionized_ammonia'][] = $value['unionized_ammonia'];
+                $result['datetime'][] = $datetime->format('Y-m-d H:i:s'); // Format waktu yang telah dikonversi
                 $no++;
             }
         }
