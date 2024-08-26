@@ -653,12 +653,14 @@ class HomeController extends Controller
         try {
             DB::beginTransaction();
             $farmer = Farmer::find($id);
-            // $farmer->nama_farmer = $request->nama_farmer;
-            if (!empty($request->logo)) {
+            $farmer->nama_farmer = $request->nama_farmer;
+            $farmer->iot_key = $request->iot_key;
+            $farmer->alamat = $request->alamat;
+            if ($request->logo) {
                 $logo_farmer = $this->uploadGambar($request->logo);
                 $farmer->logo = $logo_farmer;
             }
-            if (!empty($request->foto_toko)) {
+            if ($request->foto_toko) {
                 $foto_farmer = $this->uploadGambar($request->foto_toko);
                 $farmer->foto_toko = $foto_farmer;
             }
@@ -666,12 +668,12 @@ class HomeController extends Controller
             $farmer->save();
             DB::commit();
 
-            session()->flash('success','Berhasil Mendaftarkan Farmer Harap Tunggu Verifikasi Admin!');
+            session()->flash('success','Berhasil Mengubah Data Farmer!');
             return redirect()->route('farmer-user');
         } catch (\Exception $e) {
             dd($e);
             DB::rollback();
-            session()->flash('warning','Gagal Mendaftarkan Farmer!');
+            session()->flash('warning','Gagal Mengubah Farmer!');
             return redirect()->route('farmer-user');
         }
     }
@@ -681,4 +683,3 @@ class HomeController extends Controller
         return view('user.terimakasih');
     }
 }
-

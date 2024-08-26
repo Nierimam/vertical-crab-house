@@ -4,7 +4,7 @@
  <!-- Main Slider Start -->
  <div class="ec-main-slider section section-space-mb">
     <div class="ec-slider">
-        <div class="ec-slide-item d-flex slide-1" style="background-image: url({{ asset('img/banner.jpg') }}) !important">
+        <div class="ec-slide-item d-flex slide-1" style="background-image: url({{ asset('img/Page-1.png') }}) !important">
             <img src="" class="main_banner_arrow_img" alt="" />
             <div class="container align-self-center">
                 <div class="row">
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="ec-slide-item d-flex slide-2" style="background-image: url({{ asset('img/banner.jpg') }})">
+        <div class="ec-slide-item d-flex slide-2" style="background-image: url({{ asset('img/Page-2.png') }})">
             <img src="" class="main_banner_arrow_img" alt="" />
             <div class="container align-self-center">
                 <div class="row">
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="ec-slide-item d-flex slide-3" style="background-image: url({{ asset('img/banner.jpg') }})">
+        <div class="ec-slide-item d-flex slide-3" style="background-image: url({{ asset('img/Page-3.png') }})">
             <img src="" class="main_banner_arrow_img" alt="" />
             <div class="container align-self-center">
                 <div class="row">
@@ -170,7 +170,7 @@
 <!-- ec Product tab Area End -->
 
 <!--  offer Section Start -->
-<section class="section ec-offer-section section-space-mt section-space-mb" style="background-image: url('{{ asset('img/banner.jpg') }}');background-size: cover;background-repeat: no-repeat;background-position: center;">
+<section class="section ec-offer-section section-space-mt section-space-mb" style="background-image: url('{{ asset('img/Page-4.png') }}');background-size: cover;background-repeat: no-repeat;background-position: center;">
     <div class="container">
         <div class="row">
             <div class="ec-offer-inner" style="justify-content: flex-start !important">

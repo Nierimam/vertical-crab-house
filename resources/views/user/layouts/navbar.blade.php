@@ -210,7 +210,7 @@
     </div>
     <!-- Header responsive Bottom  End -->
     <!-- EC Main Menu Start -->
-    <div id="ec-main-menu-desk" class="sticky-nav" style="background-color: white;border-top: 1px solid #cc2145">
+    <div id="ec-main-menu-desk" class="sticky-nav" style="background-color: white;border-top: 1px solid #cc2145;">
         <div class="container position-relative">
             <div class="row">
                 <div class="col-sm-2 ec-category-block">
