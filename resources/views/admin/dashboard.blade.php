@@ -355,7 +355,7 @@
                 <div class="card radius-10 w-100">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
-                            <h6 class="mb-0"><span style="color: #cc2514">List Customer</span> </h6>
+                            <h6 class="mb-0"><span style="color: #cc2514">List User</span> </h6>
                         </div>
                         <div class="countries-list">
                             @foreach ($customer->take(6) as $data)
