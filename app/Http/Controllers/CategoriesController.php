@@ -109,9 +109,11 @@ class CategoriesController extends Controller
     public function update(Request $request, $id)
     {
         $validasi = Validator::make( $request->all(),[
-            'name' => 'string|min:5|max:25'
+            'name' => 'string|min:5|max:25',
+            'type' => 'required|string'
         ],[
-            'name.min' => 'Nama Kategori Minimal 5 Karakter'
+            'name.min' => 'Nama Kategori Minimal 5 Karakter',
+            'type.required' => 'Type Kategori harus dipilih'
         ]);
 
         if (!$validasi->fails()) {
@@ -123,9 +125,10 @@ class CategoriesController extends Controller
             return redirect()->route('kategori.index');
         }else{
             session()->flash('error',$validasi->errors()->first());
-            return redirect()->route('kategori.edit');
+            return redirect()->route('kategori.edit', $id);
         }
     }
+
 
     /**
      * Remove the specified resource from storage.

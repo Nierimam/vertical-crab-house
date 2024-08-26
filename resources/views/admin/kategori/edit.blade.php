@@ -25,6 +25,16 @@
                       <input type="text" name="name" class="form-control form-control-sm" placeholder="Masukkan nama kategori" value="{{ ucfirst($kategori->name) }}" >
                   </div>
               </div>
+              <div class="row mb-3">
+                <div class="col-lg-12">
+                    <label class="form-label">Type Kategori</label>
+                    <select name="type" class="form-control form-control-sm">
+                        <option value="" selected disabled>-Pilih Type-</option>
+                        <option value="merchant" {{ $kategori->type == 'merchant' ? 'selected' : '' }}>Merchant</option>
+                        <option value="farmer" {{ $kategori->type == 'farmer' ? 'selected' : '' }}>Farmer</option>
+                    </select>
+                </div>
+              </div>
               <div class="col-lg-12 d-flex justify-content-end" >
                 <button type="submit" class="btn btn-success"> Simpan </button>
               </div>

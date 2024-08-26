@@ -7,22 +7,24 @@
             <div class="col-md-12 text-center">
                 <div class="section-title">
                     <h2 class="ec-title">Tentang Kami</h2>
-                    <p class="sub-title mb-3">Deskripsi cerita kami</p>
+                    <p style="text-align: justify">{{$company[0]->deskripsi}}</p>
                 </div>
             </div>
             <div class="ec-common-wrapper">
-                <div class="row">
-                    <div class="col-md-6 ec-cms-block ec-abcms-block text-center">
+                {{-- <div class="row">
+                    <div class="col-md-3 ec-cms-block ec-abcms-block text-center">
                         <div class="ec-cms-block-inner">
-                        <img class="a-img" src="{{ asset('img/banner.jpg') }}" alt="about">
+                        <img class="a-img" height="300" width="300" src="{{ asset('img/logo_vertical_crab.png') }}" alt="about">
                         </div>
-                    </div>
-                    <div class="col-md-6 ec-cms-block ec-abcms-block text-center">
+                    </div> --}}
+                    <div class="col-md-12 ec-cms-block ec-abcms-block text-center">
                         <div class="ec-cms-block-inner">
-                            <h3 class="ec-cms-block-title" style="color: #cc2514">Vertical Crab House</h3>
-                            <p>{{$company[0]->deskripsi}}</p>
-                            <p>Visi : {{ $company[0]->visi }}</p>
-                            <p>Misi : {{ $company[0]->misi }}</p>
+                            <br>
+                            <h5 class="ec-title" style="color: #cc2514">VISI</h5>
+                            <p style="text-align: justify">{{ $company[0]->visi }}</p>
+                            <br>
+                            <h5 class="ec-title" style="color: #cc2514">MISI</h5>
+                            <p style="text-align: justify">{{ $company[0]->misi }}</p>
                         </div>
                     </div>
                 </div>

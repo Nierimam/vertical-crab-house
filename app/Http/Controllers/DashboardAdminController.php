@@ -67,13 +67,18 @@ class DashboardAdminController extends Controller
 
 
 
-        $produk     = produks::all();
-        $customer   = customers::all();
-        $semua_order = orders::orderBy('id', 'DESC');
+        $produk     = \App\Models\Produks::all();
+        $customer   = \App\Models\Customers::all();
+        $semua_order = \App\Models\Orders::orderBy('id', 'DESC');
         $month = $request->month ?? '';
 
         if (auth()->user()->role == 'admin') {
             $type = $request->type;
+
+            // Count all products (farmer and merchant)
+            $produkCountFarmer = \App\Models\Produks::whereNotNull('farmer_id')->count();
+            $produkCountMerchant = \App\Models\Produks::whereNotNull('merchant_id')->count();
+
             $semua_order = $semua_order->whereHas('order_produks', function ($query) use ($type) {
                 $query->whereHas('produk_variants', function ($query2) use ($type) {
                     $query2->whereHas('produks', function ($query3) use ($type) {
@@ -87,6 +92,16 @@ class DashboardAdminController extends Controller
             });
         } else {
             $user = auth()->user();
+
+            // Count products based on role (farmer or merchant)
+            if ($user->role == 'farmer') {
+                $produkCountFarmer = \App\Models\Produks::where('farmer_id', $user->farmer->id)->count();
+                $produkCountMerchant = 0; // Set to 0 as this user is not a merchant
+            } else {
+                $produkCountMerchant = \App\Models\Produks::where('merchant_id', $user->merchant->id)->count();
+                $produkCountFarmer = 0; // Set to 0 as this user is not a farmer
+            }
+
             $semua_order = $semua_order->whereHas('order_produks', function ($query) use ($user) {
                 $query->whereHas('produk_variants', function ($query2) use ($user) {
                     $query2->whereHas('produks', function ($query3) use ($user) {
@@ -103,14 +118,16 @@ class DashboardAdminController extends Controller
         $total_pemesanan = $semua_order->sum('total');
         $order = $semua_order->limit(5)->get();
 
-        return view('admin.dashboard',[
+        return view('admin.dashboard', [
+            'produkCountFarmer' => $produkCountFarmer,
+            'produkCountMerchant' => $produkCountMerchant,
             'produk' => count($produk),
             'customer' => $customer,
             'order' => $order,
             'month' => $month,
             'total_pemesanan' => $total_pemesanan,
-            'dataRealtime' => $dataRealtime,
-            'result' => json_encode($result),
+            'dataRealtime' => $dataRealtime ?? null,  // Ensure $dataRealtime is defined
+            'result' => json_encode($result ?? []),    // Ensure $result is defined
         ]);
     }
 
