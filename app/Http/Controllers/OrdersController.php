@@ -64,7 +64,7 @@ class OrdersController extends Controller
             $data = $data->whereYear('created_at', $request->year);
         }
         $total_pemesanan = $data;
-        $data = $data->paginate(7);
+        $data = $data->paginate(10);
         return view('admin.order.index',[
             'data' => $data,
             'search' => $search,

@@ -225,7 +225,7 @@ class HomeController extends Controller
         if (isset($kategori) && !empty($kategori)) {
             $produks->where('category_id', $kategori);
         }
-        $produks = $produks->paginate(9);
+        $produks = $produks->paginate(10);
         return view('user.shop.index',[
             'produks' => $produks,
             'search' => $search,

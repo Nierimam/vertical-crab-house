@@ -33,7 +33,7 @@ class ProduksController extends Controller
                 $query->where('nama_produk', 'like', '%' . $search . '%');
             });
         }
-        $produk = $produk->paginate(7);
+        $produk = $produk->paginate(10);
         return view('admin.produk.index',[
             'produks' => $produk,
             'search' => $search

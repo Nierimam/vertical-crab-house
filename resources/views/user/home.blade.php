@@ -280,15 +280,14 @@
                                             @if (auth()->user())
                                                 @if ($produk->produk_variants->where('stok', '>', 0)->count() > 0)
                                                     <div class="mt-3">
-                                                        <select name="" id="ukuran_cart_{{ $key }}" class="form form-control" style="border: 1px solid #eeeeee !important">
+                                                        <select name="" id="ukuran_cart_{{ $key }}" class="form form-control"
+                                                            style="border: 1px solid #eeeeee !important">
                                                             <option value="" selected>Pilih Variant</option>
                                                             @foreach ($produk->produk_variants as $produk_variant)
                                                                 @if ($produk_variant->stok > 0)
-                                                                    <option value="{{ $produk_variant->id }}" data-harga="{{ $produk_variant->price }}" data-stok="{{ $produk_variant->stok }}">{{ $produk_variant->nama_variant }} - {{ $produk_variant->stok }}</option>
-                                                                @else
-                                                                    <div class="mt-3">
-                                                                        <p><span style="color: #6c7ae0">{{ $produk_variant->nama_variant }}</span> - Stok Kosong</p>
-                                                                    </div>
+                                                                    <option value="{{ $produk_variant->id }}"
+                                                                        data-harga="{{ $produk_variant->price }}"
+                                                                        data-stok="{{ $produk_variant->stok }}">{{ $produk_variant->nama_variant }} - {{ $produk_variant->stok }}</option>
                                                                 @endif
                                                             @endforeach
                                                         </select>
@@ -301,17 +300,18 @@
                                                     @endforeach
                                                 @endif
                                             @else
-                                                @foreach ($produk->produk_variants as $produk_variant)
-                                                    @if ($produk_variant->stok > 0)
-                                                        <div class="mt-3">
-                                                            <p><span style="color: #6c7ae0">{{ $produk_variant->nama_variant }}</span> - {{ $produk_variant->stok }}</p>
-                                                        </div>
-                                                    @else
-                                                        <div class="mt-3">
-                                                            <p><span style="color: #6c7ae0">{{ $produk_variant->nama_variant }}</span> - Stok Kosong</p>
-                                                        </div>
-                                                    @endif
-                                                @endforeach
+                                                <div class="mt-3">
+                                                    <select name="" class="form form-control" style="border: 1px solid #eeeeee !important" disabled>
+                                                        <option value="" selected>Pilih Variant (Login untuk memilih)</option>
+                                                        @foreach ($produk->produk_variants as $produk_variant)
+                                                            @if ($produk_variant->stok > 0)
+                                                                <option value="">{{ $produk_variant->nama_variant }} - {{ $produk_variant->stok }}</option>
+                                                            @else
+                                                                <option value=""> {{ $produk_variant->nama_variant }} - Stok Kosong</option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             @endif
                                         </div>
                                     </div>

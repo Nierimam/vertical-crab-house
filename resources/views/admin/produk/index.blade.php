@@ -71,6 +71,7 @@
                             <th style="width: 5em" class="text-center">No</th>
                             <th style="width: 5em">Nama Produk</th>
                             <th style="width: 5em">Kategori Produk</th>
+                            <th style="width: 5em">Penjual</th>
                             <th style="width: 5em">Status Tampil</th>
                             <th style="width: 5em">Status Persetujuan</th>
                             <th style="width: 5em" class="text-center">Aksi</th>
@@ -83,9 +84,10 @@
                         @if (count($produks) > 0)
                             @foreach ($produks as $data)
                                 <tr>
-                                    <td class="text-center">{{ ++$index }}</td>
+                                    <td class="text-center">{{ $loop->iteration + ($produks->currentPage() - 1) * $produks->perPage() }}</td>
                                     <td>{{ ucfirst($data->nama_produk) }}</td>
                                     <td>{{ ucfirst($data->categories->name) }}</td>
+                                    <td>{{ ucfirst($data->type) }}</td>
                                     <td>
                                         <span
                                             class="badge bg-{{ statusInfo()['status_tampil_produk'][$data->status]['color'] }}">
@@ -131,9 +133,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end mt-4">
                 <nav aria-label="Page navigation example">
-                    {{ $produks->links('vendor.pagination.default') }}
+                    {{ $produks->links('vendor.pagination.bootstrap-4') }}
                 </nav>
             </div>
         </div>

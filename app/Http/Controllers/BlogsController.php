@@ -26,7 +26,7 @@ class BlogsController extends Controller
                 $query->where('judul', 'like', '%' . $search . '%');
             });
         }
-        $data = $data->paginate(7);
+        $data = $data->paginate(10);
         return view('admin.blog.index',[
             'data' => $data,
             'search' => $search
@@ -138,7 +138,7 @@ class BlogsController extends Controller
             'judul.min' => 'Judul Minimal 6 Karakter',
             'gambar.*.mimes' => 'Format Gambar harus: jpg,png,webp,svg,jpeg,gif'
         ]);
-    
+
 
         if(!$validasi->fails()){
             if (isset($request->gambar_blog_delete) && !empty($request->gambar_blog_delete)) {
@@ -184,7 +184,7 @@ class BlogsController extends Controller
                     $media->blog_id = $blog->id;
                     $media->media = $gambar;
                     $media->save();
-    
+
                 }
             }
             session()->flash('success','Berhasil Edit Blog');
